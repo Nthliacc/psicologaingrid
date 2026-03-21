@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { 
   MessageCircle, HeartHandshake, Leaf, Sparkles, 
   CheckCircle2, BookOpen, HelpCircle, ChevronDown, ChevronUp,
-  Instagram 
+  Instagram, Quote 
 } from "lucide-react";
 
 // COMPONENTE FAQ
@@ -31,10 +31,10 @@ export default function App() {
   const instagramLink = "https://www.instagram.com/ingridmarins.psi/";
 
   const especialidades = [
-    "Ansiedade e estresse que travam a rotina",
-    "Depressão e a falta de sentido no cotidiano",
-    "Relações que machucam ou geram sobrecarga",
-    "Confusão interna e a autocobrança excessiva"
+    "Oferecer um lugar seguro para o seu sentir",
+    "Transformar a confusão interna em clareza e fôlego",
+    "Melhorar a qualidade da sua conexão consigo e com o outro",
+    "Acolher sua história, de onde quer que você esteja"
   ];
 
   return (
@@ -75,16 +75,16 @@ export default function App() {
           </div>
         </div>
 
-        {/* Hero Card */}
+        {/* Hero Card - Frase Inicial Atualizada */}
         <div className="animate-fade-in-up" style={{ animationDelay: "100ms" }}>
           <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-md hover:-translate-y-1">
             <HeartHandshake className="mx-auto text-emerald-600 mb-4" size={32} />
-            <h2 className="text-xl font-semibold text-emerald-950 mb-3 leading-snug">
-              Você não precisa carregar tudo sozinha(o).
+            <h2 className="text-xl font-semibold text-emerald-950 mb-4 leading-snug">
+              O que você sente merece um lugar de acolhimento, não de julgamento.
             </h2>
-            <div className="bg-emerald-50/50 p-4 rounded-xl inline-block mb-6 border border-emerald-100">
-               <p className="text-emerald-800 leading-relaxed italic text-sm sm:text-base">
-                Ansiedade, cansaço emocional, relações difíceis ou confusão interna — existe um espaço seguro para você organizar tudo isso.
+            <div className="bg-emerald-50/50 p-5 rounded-xl inline-block mb-6 border border-emerald-100 text-left">
+               <p className="text-emerald-800 leading-relaxed text-sm sm:text-base">
+                Muitas vezes, a ansiedade, os conflitos e as incertezas são formas que encontramos de lidar com o mundo. Na terapia, abrimos espaço para transformar a confusão em clareza através de uma relação autêntica e humana.
                </p>
             </div>
 
@@ -96,37 +96,34 @@ export default function App() {
           </div>
         </div>
 
-        {/* Sobre a Terapia */}
+        {/* Sobre o Atendimento - Texto Atualizado */}
         <div className="animate-fade-in-up" style={{ animationDelay: "200ms" }}>
           <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-4 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-2">
               <div className="p-2 bg-emerald-100 rounded-xl text-emerald-700">
                 <Leaf size={20} />
               </div>
-              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Sobre o cuidado</h2>
+              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Sobre o atendimento</h2>
             </div>
             <p className="text-emerald-800 leading-relaxed">
-              Muitas vezes, o que nos trava não é um grande trauma isolado, mas o <strong>acúmulo de tudo o que fomos silenciando</strong> com o tempo. 
+              Nem sempre o que nos traz à terapia é um grande evento, mas o desejo de um lugar de confiança para organizar o sentir.
             </p>
-            <p className="text-emerald-800 leading-relaxed">
-              É aquela ansiedade que não desliga, o cansaço que o sono não resolve e a sensação de precisar parecer bem o tempo todo.
-            </p>
-            <div className="text-emerald-800 leading-relaxed bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
-              Quando guardamos o que sentimos, o peso só aumenta. Falar é o primeiro passo para esvaziar esse excesso.
+            <div className="text-emerald-800 leading-relaxed bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 italic">
+              "Aqui, ofereço um encontro humano e sensível para você habitar sua própria história com mais clareza, fortalecendo sua presença e o seu bem-estar no dia a dia."
             </div>
           </div>
         </div>
 
-        {/* Especialidades */}
+        {/* Como posso ajudar - Especialidades Atualizadas */}
         <div className="animate-fade-in-up" style={{ animationDelay: "300ms" }}>
           <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-5 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-1">
               <div className="p-2 bg-emerald-100 rounded-xl text-emerald-700">
                 <Sparkles size={20} />
               </div>
-              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Como posso te ajudar</h2>
+              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Como posso ajudar</h2>
             </div>
-            <p className="text-emerald-800 text-sm italic">Auxilio pessoas que buscam lidar melhor com:</p>
+            
             <div className="grid grid-cols-1 gap-3">
               {especialidades.map((item, index) => (
                 <div key={index} className="flex items-start gap-3 text-emerald-900 bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100 shadow-sm">
@@ -138,7 +135,18 @@ export default function App() {
           </div>
         </div>
 
-        {/* Abordagem */}
+        {/* Citação de Jorge Ponciano */}
+        <div className="animate-fade-in-up" style={{ animationDelay: "350ms" }}>
+            <div className="p-8 bg-emerald-50/30 rounded-3xl border border-emerald-100/50 relative overflow-hidden">
+                <Quote className="absolute -top-2 -left-2 text-emerald-100 w-20 h-20 -z-10 opacity-40" />
+                <p className="text-emerald-900 leading-relaxed italic text-sm sm:text-base relative z-10">
+                    "É importante que o homem não perca a singularidade de sua existência, porque, diferentemente de uma pedra, de uma rosa, ele pensa, sente e fala, mas não deve viver de pensamentos já pensados, conviver com sentimentos que lhe foram impostos e falar palavras que não são suas."
+                </p>
+                <p className="text-emerald-600 font-bold text-xs mt-4 tracking-widest uppercase">— Jorge Ponciano</p>
+            </div>
+        </div>
+
+        {/* Abordagem Técnica Atualizada */}
         <div className="animate-fade-in-up" style={{ animationDelay: "400ms" }}>
           <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-4 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-1">
@@ -147,16 +155,16 @@ export default function App() {
               </div>
               <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Minha Abordagem</h2>
             </div>
-            <p className="text-emerald-800 leading-relaxed italic border-l-4 border-emerald-300 pl-4 bg-emerald-50/50 p-3 rounded-r-xl">
-              "O autoconhecimento é o caminho para a liberdade emocional."
+            <p className="text-emerald-800 leading-relaxed">
+              Com fundamentação na <strong>Gestalt-terapia e na Existencial-Fenomenológica</strong>, compreendo a clínica como um espaço de respeito absoluto à sua singularidade.
             </p>
             <p className="text-emerald-800 leading-relaxed">
-              Utilizo a <strong>Gestalt-terapia e a abordagem existencial-fenomenológica</strong>, focando na experiência presente e na construção de sentido a partir das suas vivências.
+              Aqui, buscamos dar lugar às suas próprias palavras e sentimentos, desconstruindo o que lhe foi imposto para que você possa habitar o mundo de forma mais livre, consciente e integrada.
             </p>
           </div>
         </div>
 
-        {/* FAQ */}
+        {/* FAQ - Tira-dúvidas */}
         <div className="animate-fade-in-up" style={{ animationDelay: "500ms" }}>
           <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-5 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-2">
