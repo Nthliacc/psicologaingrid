@@ -1,170 +1,182 @@
-// src/App.jsx
-import React, { useState } from "react"; // Adicionado o useState aqui
+import React, { useState } from "react";
 import { 
   MessageCircle, HeartHandshake, Leaf, Sparkles, 
-  CheckCircle2, BookOpen, HelpCircle, ChevronDown, ChevronUp 
+  CheckCircle2, BookOpen, HelpCircle, ChevronDown, ChevronUp,
+  Instagram 
 } from "lucide-react";
 
-// 1. COMPONENTE FAQ (Declarado fora do App para funcionar corretamente)
+// COMPONENTE FAQ
 function FaqItem({ pergunta, resposta }) {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div className="py-4">
+    <div className="py-4 border-b border-emerald-100 last:border-0">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center text-left gap-4 group"
+        className="w-full flex justify-between items-center text-left gap-4 group focus:outline-none"
       >
-        <span className="font-semibold text-stone-700 group-hover:text-emerald-700 transition-colors">
+        <span className="font-semibold text-emerald-900 group-hover:text-emerald-700 transition-colors">
           {pergunta}
         </span>
-        {isOpen ? <ChevronUp size={20} className="text-emerald-600" /> : <ChevronDown size={20} className="text-stone-400" />}
+        {isOpen ? <ChevronUp size={18} className="text-emerald-600" /> : <ChevronDown size={18} className="text-emerald-400" />}
       </button>
-      
       <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-40 mt-3 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <p className="text-stone-600 text-sm leading-relaxed">
-          {resposta}
-        </p>
+        <p className="text-emerald-800 text-sm leading-relaxed">{resposta}</p>
       </div>
     </div>
   );
 }
 
-// 2. COMPONENTE PRINCIPAL
 export default function App() {
-  const whatsappLink = "https://wa.me/+5522988769995?text=Olá%20Ingrid,%20gostaria%20de%20agendar%20uma%20consulta.";
+  const whatsappLink = "https://wa.me/+5522988769995?text=Olá%20Ingrid,%20vi%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20sessão.";
+  const instagramLink = "https://www.instagram.com/ingridmarins.psi/";
 
-  const beneficios = [
-    "Entender e regular suas emoções",
-    "Lidar com crises de ansiedade",
-    "Melhorar a qualidade dos seus relacionamentos",
-    "Desenvolver um autoconhecimento profundo"
+  const especialidades = [
+    "Ansiedade e estresse que travam a rotina",
+    "Depressão e a falta de sentido no cotidiano",
+    "Relações que machucam ou geram sobrecarga",
+    "Confusão interna e a autocobrança excessiva"
   ];
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 p-4 sm:p-8 font-sans flex flex-col items-center">
+    <div className="min-h-screen bg-emerald-100/50 text-emerald-950 font-sans flex flex-col items-center">
       
-      <div className="w-full max-w-lg flex flex-col gap-8 pb-10">
+      <div className="w-full max-w-lg flex flex-col gap-8 pb-10 pt-8 px-4 sm:px-8 bg-white/90 shadow-2xl shadow-emerald-950/5 ring-1 ring-emerald-100">
         
-        {/* Header */}
-        <div className="text-center mt-8 flex flex-col items-center gap-4 animate-fade-in">
+        {/* Header - Identidade Visual */}
+        <div className="text-center flex flex-col items-center gap-4 animate-fade-in">
           <div className="relative">
             <div className="absolute inset-0 bg-emerald-100 rounded-full scale-110 animate-pulse"></div>
             <img
               src="/foto.jpeg" 
-              alt="Ingrid Marins"
+              alt="Ingrid Marins - Psicóloga"
               className="relative w-28 h-28 rounded-full object-cover shadow-lg border-4 border-white"
             />
           </div>
           
           <div>
-            <h1 className="text-3xl font-bold text-stone-900 tracking-tight">Ingrid Marins</h1>
-            <p className="text-sm font-medium text-stone-500 mt-1 uppercase tracking-widest">
+            <h1 className="text-3xl font-bold text-emerald-950 tracking-tight">Ingrid Marins</h1>
+            <p className="text-sm font-medium text-emerald-700 mt-1 uppercase tracking-widest">
               Psicóloga Clínica • CRP 05/84106
             </p>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mt-3">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              Atendimento Online
-            </span>
+            <div className="flex flex-col items-center gap-2 mt-3">
+              <span className="inline-flex items-center gap-1.5 bg-white text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-200 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Atendimento Online
+              </span>
+              <a 
+                href={instagramLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-emerald-600 hover:text-emerald-800 text-xs font-medium transition-colors"
+              >
+                <Instagram size={14} /> @ingridmarins.psi
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Hero Card */}
         <div className="animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-          <div className="rounded-3xl shadow-sm border border-stone-200/60 bg-white p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 text-center transition-all duration-300 hover:shadow-md hover:-translate-y-1">
             <HeartHandshake className="mx-auto text-emerald-600 mb-4" size={32} />
-            <h2 className="text-xl font-semibold text-stone-800 mb-3 leading-snug">
-              Você não precisa lidar com tudo sozinho(a).
+            <h2 className="text-xl font-semibold text-emerald-950 mb-3 leading-snug">
+              Você não precisa carregar tudo sozinha(o).
             </h2>
-            <p className="text-stone-600 leading-relaxed mb-6">
-              Ansiedade, cansaço emocional, relações difíceis ou confusão interna — existe um espaço seguro e acolhedor para você organizar tudo isso.
-            </p>
+            <div className="bg-emerald-50/50 p-4 rounded-xl inline-block mb-6 border border-emerald-100">
+               <p className="text-emerald-800 leading-relaxed italic text-sm sm:text-base">
+                Ansiedade, cansaço emocional, relações difíceis ou confusão interna — existe um espaço seguro para você organizar tudo isso.
+               </p>
+            </div>
 
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block">
-              <button className="w-full rounded-2xl bg-emerald-600 text-white p-4 flex items-center justify-center gap-2 font-medium hover:bg-emerald-700 hover:scale-[1.02] active:scale-95 transition-all shadow-md">
-                <MessageCircle size={20} /> Agendar pelo WhatsApp
+              <button className="w-full rounded-2xl bg-emerald-600 text-white p-4 flex items-center justify-center gap-2 font-medium hover:bg-emerald-700 hover:scale-[1.02] active:scale-95 transition-all shadow-sm shadow-emerald-600/20 focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:ring-offset-2">
+                <MessageCircle size={20} /> Agendar minha sessão
               </button>
             </a>
           </div>
         </div>
 
-        {/* Sobre */}
+        {/* Sobre a Terapia */}
         <div className="animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-          <div className="rounded-3xl shadow-sm border border-stone-200/60 bg-white p-8 flex flex-col gap-4 transition-all duration-300 hover:shadow-xl">
+          <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-4 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-stone-100 rounded-xl text-stone-600">
+              <div className="p-2 bg-emerald-100 rounded-xl text-emerald-700">
                 <Leaf size={20} />
               </div>
-              <h2 className="font-bold text-xl text-stone-800">Sobre o atendimento</h2>
+              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Sobre o cuidado</h2>
             </div>
-            <p className="text-stone-600 leading-relaxed">
-              Muitas vezes, o que nos leva à terapia não é um grande acontecimento, mas o acúmulo do que sentimos no dia a dia.
+            <p className="text-emerald-800 leading-relaxed">
+              Muitas vezes, o que nos trava não é um grande trauma isolado, mas o <strong>acúmulo de tudo o que fomos silenciando</strong> com o tempo. 
             </p>
-            <p className="text-stone-600 leading-relaxed">
-              Aqui, você encontra um espaço de escuta, acolhimento e compreensão, <strong>totalmente livre de julgamentos</strong>.
+            <p className="text-emerald-800 leading-relaxed">
+              É aquela ansiedade que não desliga, o cansaço que o sono não resolve e a sensação de precisar parecer bem o tempo todo.
             </p>
+            <div className="text-emerald-800 leading-relaxed bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
+              Quando guardamos o que sentimos, o peso só aumenta. Falar é o primeiro passo para esvaziar esse excesso.
+            </div>
           </div>
         </div>
 
-        {/* Benefícios */}
+        {/* Especialidades */}
         <div className="animate-fade-in-up" style={{ animationDelay: "300ms" }}>
-          <div className="rounded-3xl shadow-sm border border-stone-200/60 bg-white p-8 flex flex-col gap-5 transition-all duration-300 hover:shadow-xl">
+          <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-5 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-1">
-              <div className="p-2 bg-stone-100 rounded-xl text-stone-600">
+              <div className="p-2 bg-emerald-100 rounded-xl text-emerald-700">
                 <Sparkles size={20} />
               </div>
-              <h2 className="font-bold text-xl text-stone-800">Como posso te ajudar</h2>
+              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Como posso te ajudar</h2>
             </div>
-            <ul className="flex flex-col gap-4 mt-2">
-              {beneficios.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 text-stone-700">
-                  <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={20} />
-                  <span className="leading-snug">{item}</span>
-                </li>
+            <p className="text-emerald-800 text-sm italic">Auxilio pessoas que buscam lidar melhor com:</p>
+            <div className="grid grid-cols-1 gap-3">
+              {especialidades.map((item, index) => (
+                <div key={index} className="flex items-start gap-3 text-emerald-900 bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100 shadow-sm">
+                  <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} />
+                  <span className="leading-snug text-sm font-medium">{item}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
         {/* Abordagem */}
         <div className="animate-fade-in-up" style={{ animationDelay: "400ms" }}>
-          <div className="rounded-3xl shadow-sm border border-stone-200/60 bg-white p-8 flex flex-col gap-4 transition-all duration-300 hover:shadow-xl">
+          <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-4 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-1">
-              <div className="p-2 bg-stone-100 rounded-xl text-stone-600">
+              <div className="p-2 bg-emerald-100 rounded-xl text-emerald-700">
                 <BookOpen size={20} />
               </div>
-              <h2 className="font-bold text-xl text-stone-800">Minha Abordagem</h2>
+              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Minha Abordagem</h2>
             </div>
-            <p className="text-stone-600 leading-relaxed italic border-l-4 border-emerald-200 pl-4">
+            <p className="text-emerald-800 leading-relaxed italic border-l-4 border-emerald-300 pl-4 bg-emerald-50/50 p-3 rounded-r-xl">
               "O autoconhecimento é o caminho para a liberdade emocional."
             </p>
-            <p className="text-stone-600 leading-relaxed">
-              Utilizo a <strong>Terapia Cognitivo-Comportamental (TCC)</strong>, focando em como pensamentos influenciam emoções e ações.
+            <p className="text-emerald-800 leading-relaxed">
+              Utilizo a <strong>Gestalt-terapia e a abordagem existencial-fenomenológica</strong>, focando na experiência presente e na construção de sentido a partir das suas vivências.
             </p>
           </div>
         </div>
 
         {/* FAQ */}
         <div className="animate-fade-in-up" style={{ animationDelay: "500ms" }}>
-          <div className="rounded-3xl shadow-sm border border-stone-200/60 bg-white p-8 flex flex-col gap-5 transition-all duration-300 hover:shadow-xl">
+          <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-5 transition-all duration-300 hover:shadow-md">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-stone-100 rounded-xl text-stone-600">
+              <div className="p-2 bg-emerald-100 rounded-xl text-emerald-700">
                 <HelpCircle size={20} />
               </div>
-              <h2 className="font-bold text-xl text-stone-800">Dúvidas Comuns</h2>
+              <h2 className="font-bold text-xl text-emerald-950 tracking-tight">Dúvidas Comuns</h2>
             </div>
-            <div className="divide-y divide-stone-100">
+            <div className="flex flex-col">
               <FaqItem 
                 pergunta="Quanto tempo dura cada sessão?" 
-                resposta="As sessões individuais têm duração média de 50 minutos." 
+                resposta="As sessões individuais têm duração média de 50 minutos. É o seu tempo reservado para cuidar de si." 
               />
               <FaqItem 
                 pergunta="Como funciona o atendimento online?" 
-                resposta="As consultas são feitas por videochamada em plataforma segura e sigilosa." 
+                resposta="As consultas são feitas por videochamada em plataforma segura e sigilosa, garantindo seu conforto e privacidade." 
               />
               <FaqItem 
                 pergunta="Você emite recibo para reembolso?" 
-                resposta="Sim! Emito recibos com todos os dados para você solicitar o reembolso junto ao convênio." 
+                resposta="Sim! Emito recibos com todos os dados necessários para você solicitar o reembolso junto ao seu convênio médico." 
               />
             </div>
           </div>
@@ -172,26 +184,27 @@ export default function App() {
 
         {/* CTA final */}
         <div className="animate-fade-in-up" style={{ animationDelay: "600ms" }}>
-          <div className="rounded-3xl bg-gradient-to-br from-emerald-50 to-teal-100 p-8 text-center border border-emerald-100/50 transition-all hover:shadow-lg">
-            <p className="font-semibold text-emerald-900 text-lg mb-6 leading-snug">
-              Dar o primeiro passo pode transformar sua relação com você mesmo(a).
+          <div className="rounded-3xl bg-gradient-to-br from-emerald-100 to-emerald-200 p-8 text-center border border-emerald-200 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1">
+            <p className="font-semibold text-emerald-950 text-lg mb-6 leading-snug">
+              Seu processo pode começar agora. Estou aqui para te acompanhar.
             </p>
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block">
-              <button className="w-full rounded-2xl bg-stone-900 text-white p-4 flex items-center justify-center gap-2 font-medium hover:bg-stone-800 hover:scale-[1.02] active:scale-95 transition-all shadow-lg">
-                <MessageCircle size={20} /> Quero agendar minha sessão
+              <button className="w-full rounded-2xl bg-emerald-700 text-white p-4 flex items-center justify-center gap-3 font-medium hover:bg-emerald-800 hover:scale-[1.02] active:scale-95 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2">
+                <MessageCircle size={22} /> Iniciar minha caminhada
               </button>
             </a>
           </div>
         </div>
 
-        {/* Rodapé */}
-        <footer className="mt-10 text-center text-stone-400 text-xs flex flex-col gap-2">
+        {/* Footer */}
+        <footer className="mt-10 text-center text-emerald-600/80 text-[11px] flex flex-col gap-2 pb-6 border-t border-emerald-100 pt-6">
           <p>© 2026 Ingrid Marins - Psicóloga Clínica</p>
           <p>CRP 05/84106 | Todos os direitos reservados</p>
-          <div className="flex justify-center gap-4 mt-2">
-            <a href="https://e-psi.cfp.org.br/" target="_blank" rel="noreferrer" className="hover:text-emerald-600 underline">Cadastro e-Psi</a>
+          <div className="flex justify-center gap-4 mt-1">
+            <a href="https://e-psi.cfp.org.br/" target="_blank" rel="noreferrer" className="hover:text-emerald-800 underline transition-colors">Cadastro e-Psi</a>
+            <a href={instagramLink} target="_blank" rel="noreferrer" className="hover:text-emerald-800 underline transition-colors">Instagram</a>
           </div>
-          <p className="max-w-xs mx-auto mt-4 text-[10px] leading-tight text-stone-400/70">
+          <p className="max-w-xs mx-auto mt-4 leading-tight opacity-70">
             AVISO: Este site não oferece atendimento de urgência. Em caso de crise, ligue para o CVV no número 188.
           </p>
         </footer>
