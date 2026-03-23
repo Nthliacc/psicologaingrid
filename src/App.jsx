@@ -163,7 +163,9 @@ export default function App() {
             </p>
           </div>
         </div>
-
+        {/* Elfsight Google Reviews | Untitled Google Reviews */}
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-d34ac6a4-f96c-467a-b46d-08c7affd3d22" data-elfsight-app-lazy></div>
         {/* FAQ - Tira-dúvidas */}
         <div className="animate-fade-in-up" style={{ animationDelay: "500ms" }}>
           <div className="rounded-3xl shadow-sm border border-emerald-100 bg-white p-8 flex flex-col gap-5 transition-all duration-300 hover:shadow-md">
